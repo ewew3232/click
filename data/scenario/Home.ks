@@ -61,6 +61,8 @@
 
 [eval exp="f.n3=f.m3 * 4"]
 
+[eval exp="f.cps=f.n1+f.n2+f.n3"]
+
 [button  storage="CG.ks"  target=""  graphic="story.png"  width="300"  height="50"  x="650"  y="450"  _clickable_img=""  name="img_29"  ]
 [button  storage="Home.ks"  target="*KEY"  graphic="toumei_transparent.png"  width="200"  height="90"  x="100"  y="300"  _clickable_img=""  name="img_35"  ]
 [button  storage="Home.ks"  target="*UNIX"  graphic="toumei_transparent.png"  width="330"  height="150"  x="800"  y="30"  _clickable_img=""  name="img_30"  ]
@@ -80,6 +82,26 @@
 
 [ptext layer="0" x="800" y="220" color="0x0d00fa" size="20" text="&toFullWidth(paddingZero(f.m3,4))"]
 
+[ptext layer="0" x="54" y="400" color="0x000000" size="38" text="&toFullWidth(paddingZero(f.cps,5) + '/second')"]
+
+[tb_start_tyrano_code]
+
+
+[iscript]
+
+f.n_all = setInterval(second, 1000);
+function second(){
+f.n_all= f.n_all + f.cps;
+;kagだと関数でない。。。
+;TYRANO.kag.ftag.startTag("ptext",{layer:"0",text:"&f.n_all",size:"30",x:"200",y:"500",color:"red",time:"1000"});
+;どうかんがえても1秒ごとに実行されてないので停止
+;TYRANO.kag.ftag.startTag("cm")
+;TYRANO.kag.ftag.startTag("freelayer",{layer:"0",time:"0"})
+;TYRANO.kag.ftag.startTag("jump", {storage:"home.ks",target:"*start"});
+}
+[endscript]
+[_tb_end_tyrano_code]
+
 [tb_start_tyrano_code]
 [if exp="f.n_all >=100"]
 [tb_cg  id="IRON_CG"  ]
@@ -89,6 +111,7 @@
 [endif]
 [_tb_end_tyrano_code]
 
+[tb_ptext_hide  time="1000"  ]
 [s  ]
 *KEY
 
@@ -200,5 +223,6 @@
 [freelayer layer="0"]
 [cm]
 [_tb_end_tyrano_code]
+
 [jump  storage="Home.ks"  target="*start"  ]
 [s  ]

@@ -1,4 +1,4 @@
-[_tb_system_call storage=system/_chapter_Jump.ks]
+[_tb_system_call storage=system/_IronPipe.ks]
 
 *Iron_start
 
@@ -29,5 +29,5 @@ hogege[p]
 [chara_hide  name="yamato"  time="0"  wait="true"  pos_mode="true"  ]
 [chara_hide  name="akane"  time="0"  wait="true"  pos_mode="true"  ]
 [cm  ]
-[jump  storage="Home.ks"  target=""  ]
+[jump  storage="Home.ks"  target="*start"  ]
 [s  ]
